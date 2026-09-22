@@ -1,0 +1,20 @@
+[package]
+name = "gpubench-core"
+version = "0.1.0"
+edition = "2021"
+description = "Core GPU benchmarking library using tracel-ash (Raw Vulkan)"
+
+[dependencies]
+# Raw Vulkan bindings. `tracel-ash` (mentioned in the plan) does not export the
+# high-level `Entry` / `Instance` / `Device` wrappers — those live in the base
+# `ash` crate (which tracel-ash itself depends on for compute-side APIs).
+ash = { version = "0.38", features = ["loaded", "debug", "std"] }
+
+# GLSL → SPIR-V shader compilation
+shaderc = "0.8"
+
+# Safe buffer casting
+bytemuck = { version = "1", features = ["derive"] }
+
+# Error handling
+anyhow = "1"

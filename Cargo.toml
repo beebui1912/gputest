@@ -1,0 +1,24 @@
+[workspace]
+members = [
+    ".",
+    "gpubench-core",
+]
+
+[package]
+name = "gpubench"
+version = "0.1.0"
+edition = "2021"
+description = "GPU Health Evaluation Tool using tracel-ash (Raw Vulkan)"
+
+[dependencies]
+gpubench-core = { path = "gpubench-core" }
+
+# Terminal UI
+colored = "3"
+dialoguer = "0.11"
+indicatif = "0.17"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
